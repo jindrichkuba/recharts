@@ -40,6 +40,7 @@ const propTypes = {
     PropTypes.node,
   ]),
   className: PropTypes.string,
+  id: PropTypes.string,
   content: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 };
 
@@ -66,7 +67,7 @@ const getDeltaAngle = (startAngle, endAngle) => {
 };
 
 const renderRadialLabel = (labelProps, label, attrs) => {
-  const { position, viewBox, offset, className } = labelProps;
+  const { position, viewBox, offset, className, id } = labelProps;
   const { cx, cy, innerRadius, outerRadius, startAngle, endAngle,
     clockWise } = viewBox;
   const radius = (innerRadius + outerRadius) / 2;
@@ -92,16 +93,17 @@ const renderRadialLabel = (labelProps, label, attrs) => {
   const path = `M${startPoint.x},${startPoint.y}
     A${radius},${radius},0,1,${direction ? 0 : 1},
     ${endPoint.x},${endPoint.y}`;
-  const id = _.isNil(labelProps.id) ? uniqueId('recharts-radial-line-') : labelProps.id;
+  const labelId = _.isNil(labelProps.id) ? uniqueId('recharts-radial-line-') : labelProps.id;
 
   return (
     <text
       {...attrs}
+      id={id}
       dominantBaseline="central"
       className={classNames('recharts-radial-bar-label', className)}
     >
-      <defs><path id={id} d={path} /></defs>
-      <textPath xlinkHref={`#${id}`}>{label}</textPath>
+      <defs><path id={labelId} d={path} /></defs>
+      <textPath xlinkHref={`#${labelId}`}>{label}</textPath>
     </text>
   );
 };
@@ -295,7 +297,7 @@ const getAttrsOfCartesianLabel = (props) => {
 const isPolar = viewBox => isNumber(viewBox.cx);
 
 function Label(props) {
-  const { viewBox, position, value, children, content, className = '' } = props;
+  const { viewBox, position, id, value, children, content, className = '' } = props;
 
   if (!viewBox || (_.isNil(value) && _.isNil(children) &&
     !isValidElement(content) && !_.isFunction(content))) { return null; }
@@ -328,6 +330,7 @@ function Label(props) {
 
   return (
     <Text
+      id={id}
       className={classNames('recharts-label', className)}
       {...attrs}
       {...positionAttrs}

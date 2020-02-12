@@ -40,6 +40,7 @@ class Scatter extends PureComponent {
     legendType: PropTypes.oneOf(LEGEND_TYPES),
     tooltipType: PropTypes.oneOf(TOOLTIP_TYPES),
     className: PropTypes.string,
+    id: PropTypes.string,
     name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
     activeIndex: PropTypes.number,
@@ -193,7 +194,7 @@ class Scatter extends PureComponent {
   }
 
   renderSymbolsStatically(points) {
-    const { shape, activeShape, activeIndex } = this.props;
+    const { shape, activeShape, activeIndex, id } = this.props;
     const baseProps = getPresentationAttributes(this.props);
 
     return points.map((entry, i) => {
@@ -201,6 +202,7 @@ class Scatter extends PureComponent {
 
       return (
         <Layer
+          id={id + i}
           className="recharts-scatter-symbol"
           {...filterEventsOfChild(this.props, entry, i)}
           key={`symbol-${i}`} // eslint-disable-line react/no-array-index-key

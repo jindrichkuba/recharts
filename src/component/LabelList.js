@@ -30,15 +30,12 @@ function LabelList(props) {
           const value = _.isNil(dataKey) ?
             valueAccessor(entry, index) :
             getValueByDataKey(entry && entry.payload, dataKey);
-          const idProps = _.isNil(id) ? {} : {
-            id: `${id}-${index}`,
-          };
 
           return (
             <Label
               {...getPresentationAttributes(entry)}
               {...others}
-              {...idProps}
+              id={id}
               index={index}
               value={value}
               viewBox={Label.parseViewBox(_.isNil(clockWise) ? entry : { ...entry, clockWise })}

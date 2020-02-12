@@ -297,7 +297,7 @@ export default class Demo extends Component {
             <YAxis type="number" />
             <CartesianGrid horizontal={false} />
             <Tooltip />
-            <Bar dataKey="uv" fill="#ff7300" maxBarSize={15} isAnimationActive={false} />
+            <Bar id="test" dataKey="uv" fill="#ff7300" maxBarSize={15} isAnimationActive={false} />
             <Bar dataKey="pv" fill="#387908" />
           </BarChart>
         </div>

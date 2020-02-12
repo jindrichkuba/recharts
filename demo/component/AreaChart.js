@@ -262,10 +262,10 @@ export default class AreaChartDemo extends Component {
               yAxisId={2}
               stroke="#38abc8"
             >
-              <Label position="top" offset={10}>amt</Label>
+              <Label id="labelTest" position="top" offset={10}>amt</Label>
             </YAxis>
             <XAxis dataKey="name" interval={0}/>
-            <Area dataKey="uv" stroke="#ff7300" fill="#ff7300" strokeWidth={2} yAxisId={0} />
+            <Area id="areaTest" dataKey="uv" stroke="#ff7300" fill="#ff7300" strokeWidth={2} yAxisId={0} />
             <Area dataKey="pv" stroke="#387908" fill="#387908" strokeWidth={2} yAxisId={1} />
             <Area dataKey="amt" stroke="#38abc8" fill="#38abc8" strokeWidth={2} yAxisId={2} />
           </AreaChart>
@@ -337,6 +337,7 @@ export default class AreaChartDemo extends Component {
             <YAxis />
             <Tooltip />
             <Area
+              id="test"
               type="monotone"
               dataKey="uv"
               stroke="#0088FE"

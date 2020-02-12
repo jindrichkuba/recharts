@@ -40,6 +40,7 @@ class Curve extends PureComponent {
   static propTypes = {
     ...PRESENTATION_ATTRIBUTES,
     className: PropTypes.string,
+    id: PropTypes.string,
     type: PropTypes.oneOfType([PropTypes.oneOf([
       'basis', 'basisClosed', 'basisOpen', 'linear', 'linearClosed', 'natural',
       'monotoneX', 'monotoneY', 'monotone', 'step', 'stepBefore', 'stepAfter',
@@ -98,7 +99,7 @@ class Curve extends PureComponent {
   }
 
   render() {
-    const { className, points, path, pathRef } = this.props;
+    const { className, points, path, pathRef, id } = this.props;
 
     if ((!points || !points.length) && !path) { return null; }
 
@@ -112,6 +113,7 @@ class Curve extends PureComponent {
         className={classNames('recharts-curve', className)}
         d={realPath}
         ref={pathRef}
+        id={id}
       />
     );
   }

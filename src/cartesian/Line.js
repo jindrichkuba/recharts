@@ -301,12 +301,13 @@ class Line extends PureComponent {
   }
 
   renderCurveStatically(points, needClip, clipPathId, props) {
-    const { type, layout, connectNulls } = this.props;
+    const { type, layout, connectNulls, id } = this.props;
     const curveProps = {
       ...getPresentationAttributes(this.props),
       ...filterEventAttributes(this.props),
       fill: 'none',
       className: 'recharts-line-curve',
+      id,
       clipPath: needClip ? `url(#clipPath-${clipPathId})` : null,
       points,
       ...props,

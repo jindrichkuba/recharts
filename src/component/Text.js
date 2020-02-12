@@ -137,6 +137,7 @@ class Text extends Component {
       lineHeight,
       capHeight,
       className,
+      id,
       ...textProps
     } = this.props;
     const { wordsByLines } = this.state;
@@ -174,6 +175,7 @@ class Text extends Component {
 
     return (
       <text
+        id={id}
         {...getPresentationAttributes(textProps)}
         {...filterEventAttributes(textProps)}
         x={x}

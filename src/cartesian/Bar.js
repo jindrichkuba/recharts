@@ -211,7 +211,7 @@ class Bar extends PureComponent {
   }
 
   renderRectanglesStatically(data) {
-    const { shape } = this.props;
+    const { shape, id } = this.props;
     const baseProps = getPresentationAttributes(this.props);
 
     return data && data.map((entry, i) => {
@@ -219,6 +219,7 @@ class Bar extends PureComponent {
 
       return (
         <Layer
+          id={id}
           className="recharts-bar-rectangle"
           {...filterEventsOfChild(this.props, entry, i)}
           key={`rectangle-${i}`} // eslint-disable-line react/no-array-index-key

@@ -333,10 +333,10 @@ class Area extends PureComponent {
   }
 
   renderAreaStatically(points, baseLine, needClip, clipPathId) {
-    const { layout, type, stroke, connectNulls, isRange } = this.props;
+    const { layout, type, stroke, connectNulls, isRange, id } = this.props;
 
     return (
-      <Layer clipPath={needClip ? `url(#clipPath-${clipPathId})` : null}>
+      <Layer id={id} clipPath={needClip ? `url(#clipPath-${clipPathId})` : null}>
         <Curve
           {...this.props}
           points={points}
